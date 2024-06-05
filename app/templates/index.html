@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,20 +36,45 @@
 
         <div class="formulario">
             <h1>INICIO DE SESION </h1>
-            <form method="post">
-                <div class="username">
-                    <input type="text"  required>
-                    <label >Nombre de usuario</label>
-                </div>
-                <div class="username">
-                    <input type="password" required> 
-                    <label >contraseña</label>
-                </div>
+             <!----usuario incorrecto-->
+            {% if mensaje %}
+            <div class="alert alert-danger" role="alert">
+              {{ mensaje }}
+            </div>
+            {% endif %}
+                <!------>
+
+            
+ <!----MENSAJE DE REGISTRO EXITOSO-->
+            {% if mensaje2 %}
+            <div class="alert alert-success" role="alert">
+              {{ mensaje2 }}
+             </div>
+            {% endif %}
+ <!-- -------------------- -------->
+
+ 
+             <div class="username">
+            <form action="/login"method="POST">
+              
+          <input type="text"name ="CORREO" placeholder="CORREO">
+             <input type="text"name ="CONTRASEÑA"  placeholder="CONTRASEÑA">
+           
+          <br>
+             
+                <button  class="inn"  type ="submit"> INICIO</button>
+              </div>
+            
+                </form>
+                
+                
+                
                 <a class="recordar" href="/CONTRASEÑA">¿olvido la contraseña?</a>
       
 <br>
 
-                <a class="inn" href="/INICIO">INICIO</a>
+                
+                
                 
         
        
@@ -52,7 +83,7 @@
         
                 <div class="registrarse">
         
-                    Quiero hacer el <a href="/registro" >REGISTRO</a>
+                    Quiero hacer el <a href="/regi" >REGISTRO</a>
                 </div>
 
             </form>

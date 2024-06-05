@@ -1,65 +1,19 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, request,session, redirect, url_for
+from flask_mysqldb import MySQL
 
 
 app=Flask(__name__)
+#controladores
 
-@app.route("/")
-def index():
-   return render_template("index.html")
-
-@app.route("/CONTRASEÑA")
-def CONTRASEÑA():
-  return render_template("CONTRASEÑA.html")
-
-@app.route("/registro")
-def registro():
-  return render_template("registro.html")
-  
-
-@app.route("/SERVICIOS")
-def SERVICIOS():
-  return render_template("SERVICIOS.html")
-
-@app.route("/TARIFA")
-def TARIFA():
-  return render_template("TARIFA.html")
-
-@app.route("/CONTACTO")
-def CONTACTO():
-  return render_template("CONTACTO.html")
-
-@app.route("/ACERCA DE")
-def ACERCA_DE():
-  return render_template("ACERCA DE.html")
-
-@app.route("/INICIO")
-def INICIO():
-  return render_template("INICIO.html")
+from controller import *
 
 
-@app.route("/ESTADO")
-def ESTADO():
-  return render_template("ESTADO.html")
-
-
-@app.route("/PQRS")
-def PQRS():
-  return render_template("PQRS.html")
-
-
-@app.route("/TICKET")
-def TICKET():
-  return render_template("TICKET.html")
-
-
-@app.route("/index")
-def SALIR():
-   return render_template("index.html")
  
+    
  
-
-
 if __name__=="__main__":
+  
+    app.secret_key = "pin"
     app.run(debug=True)
     
     
