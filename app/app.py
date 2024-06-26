@@ -9,8 +9,6 @@ from controller import *
 
 
  
-    
- 
 if __name__=="__main__":
   
     app.secret_key = "pin"

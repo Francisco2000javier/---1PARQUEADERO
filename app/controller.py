@@ -18,13 +18,13 @@ def add_login():
     CONTRASEÑA= request.form ["CONTRASEÑA"]
     print(CORREO, CONTRASEÑA)
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT* FROM a WHERE CORREO  = %s  AND CONTRASEÑA = %s", (CORREO,CONTRASEÑA))
+    cursor.execute("SELECT* FROM usuarios WHERE CORREO  = %s  AND CONTRASEÑA = %s", (CORREO,CONTRASEÑA))
     account = cursor.fetchone( )
     if account:
         session["logueado"]= True
-        #session["id_rol"] 
-         # if session["id_rol"]==1:
-          #  return render_template("INICIO.html")
+         #session["id_rol"] 
+          #if session["id_rol"]==1:
+        return render_template("INICIO.html")
          #elif session["id_rol"]==2:
          #return "admin"
 
@@ -48,14 +48,13 @@ def add_registro():
     CORREO= request.form["CORREO"]
     NUMERODEDOCUMENTO=request.form["NUMERODEDOCUMENTO"]
     TIPODEDOCUMENTO= request.form["TIPODEDOCUMENTO"]
-    PLACA = request.form ["PLACA"]
-    TIPOVEHICULO= request.form ["TIPOVEHICULO"]
+ 
+ 
     NOMBRES=request.form["NOMBRES"]
     APELLIDOS = request.form["APELLIDOS"]
     cursor = mysql.connection.cursor()
-    cursor.execute("INSERT INTO a (NOMBRES,APELLIDOS,TELEFONO,PLACA,CORREO,CONTRASEÑA,PAIS,DIRECCION,TIPOVEHICULO,TIPODEDOCUMENTO,NUMERODEDOCUMENTO,id_rol) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,2)",[NOMBRES,APELLIDOS,TELEFONO,PLACA,CORREO,CONTRASEÑA,PAIS,DIRECCION,TIPOVEHICULO,TIPODEDOCUMENTO, NUMERODEDOCUMENTO])
+    cursor.execute("INSERT INTO usuarios (NOMBRES,APELLIDOS,TELEFONO,CORREO,CONTRASEÑA,PAIS,DIRECCION,TIPODEDOCUMENTO,NUMERODEDOCUMENTO,id_rol) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,2)",[NOMBRES,APELLIDOS,TELEFONO,CORREO,CONTRASEÑA,PAIS,DIRECCION,TIPODEDOCUMENTO, NUMERODEDOCUMENTO])
     mysql.connection.commit()
-    #flash("contact added successfully")
     return render_template("index.html", mensaje2=" registro exitoso")
      
      #fin registro
@@ -83,11 +82,38 @@ def CONTRASEÑA():
   return render_template("CONTRASEÑA.html")
 
 
-  
-
 @app.route("/SERVICIOS")
 def SERVICIOS():
   return render_template("SERVICIOS.html")
+
+
+  
+
+@app.route("/ingreso")
+def ingrreso():
+  return render_template("ingreso.html")
+
+@app.route("/add_in", methods=["POST"])
+def add_in():
+  if request.method == "POST":
+     PLACA =request.form["PLACA"]
+     #MODEL=request.form["MODELO"]
+     TIPO= request.form["TIPO"]
+     HOR= request.form["HORA"]
+     #descripsion = request.form["descripsion"]
+     print(PLACA)
+     cursor = mysql.connection.cursor()
+     cursor.execute(" INSERT INTO rvehiculo (PLACA,TIPOVEHICULO,HORALLEGADA) VALUES (%s,%s,%s)",[PLACA,TIPO,HOR]  )
+     mysql.connection.commit()
+     return render_template("INICIO.html") 
+    
+    
+    
+
+@app.route("/SALIDA")
+def SALID():
+  return render_template("SALIDA.html")
+
 
 @app.route("/TARIFA")
 def TARIFA():

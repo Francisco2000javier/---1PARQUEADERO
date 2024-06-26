@@ -34,29 +34,97 @@
 <form  action="/add_registro"method="POST">
  
    
- 
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">CORREO</label>
+    <input type="text" class="form-control" name="CORREO" value="" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">CONTRASEÑA</label>
+    <input type="text" class="form-control" name="CONTRASEÑA" value="" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
 
   
   
-<input type="text"name ="CORREO" placeholder="CORREO">
 
-<input type="text"name ="CONTRASEÑA" placeholder="CONTRASEÑA">
-<input type="text"name ="NOMBRES" placeholder="NOMBRES">
-<br>
-<br>
-<input type="text"name ="APELLIDOS" placeholder="APELLIDOS">
 
-<input type="text" name="TIPODEDOCUMENTO" placeholder="TIPODEDOCUMENTO">
-<input type="text"name ="NUMERODEDOCUMENTO" placeholder="NUMERODEDOCUMENTO">
+<div class="col-md-4">
+  <label for="validationCustom01" class="form-label">NOMBRES</label>
+  <input type="text" class="form-control" name="NOMBRES" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
 <br>
 <br>
-<input type="text"name ="TELEFONO" placeholder="TELEFONO">
+<div class="col-md-4">
+  <label for="validationCustom02" class="form-label">APELLIDOS</label>
+  <input type="text" class="form-control" name="APELLIDOS" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
 
-<input type="text"name ="PAIS" placeholder="PAIS">
-<input type="text"name ="DIRECCION" placeholder="DIRECCION">
-<div class="shadow-none p-3 mb-5 bg-body-tertiary rounded">REGISTRO DEL VEHICULO</div>
-<input type="text"name ="PLACA" placeholder="PLACA">
-<input type="text"name ="TIPOVEHICULO" placeholder="TIPOVEHICULO">
+
+<div class="col-md-3">
+  <label for="validationCustom04" class="form-label" name="TIPODEDOCUMENTO">TIPO DE DOCUMENTO</label>
+  <select class="form-select"name="TIPODEDOCUMENTO" required>
+    <option selected disabled value="">CC</option>
+    <option>CEDULA CIUDANIA </option>
+    <option>TARJETA DE IDENTIDAD</option>
+  </select>
+  <div class="invalid-feedback">
+    Please select a valid state.
+  </div>
+</div>
+
+<div class="col-md-4">
+  <label for="validationCustom02" class="form-label">NUMERO DE DOCUMENTO</label>
+  <input type="text" class="form-control" name ="NUMERODEDOCUMENTO" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
+
+  
+
+
+<div class="col-md-4">
+  <label for="validationCustom02" class="form-label">TELEFONO</label>
+  <input type="text" class="form-control" name ="TELEFONO" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <label for="validationCustom02" class="form-label">PAIS</label>
+  <input type="text" class="form-control" name ="PAIS" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <label for="validationCustom02" class="form-label">DIRECCION</label>
+  <input type="text" class="form-control" name ="DIRECCION" value="" required>
+  <div class="valid-feedback">
+    Looks good!
+  </div>
+</div>
+
+
+
+
+
 
 
 
