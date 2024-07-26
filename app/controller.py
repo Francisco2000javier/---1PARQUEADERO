@@ -22,11 +22,14 @@ def add_login():
     account = cursor.fetchone( )
     if account:
         session["logueado"]= True
-         #session["id_rol"] 
-          #if session["id_rol"]==1:
+       # session["id_usuario"] = account["id_usuario"]
+        #session['id_rol'] = account['id_rol'] 
+      
+      
+       # if session['id_rol']==1:
         return render_template("INICIO.html")
-         #elif session["id_rol"]==2:
-         #return "admin"
+        #elif session['id_rol']==2:
+         # return "admin"
 
     else:
          return render_template("index.html", mensaje="usuario incorrecto")
@@ -64,11 +67,36 @@ def add_registro():
 @app.route("/")
 def index():
    return render_template("index.html")
+ 
+ 
+@app.route("/CRTARIF")
+def CREART():
+    return render_template("CRTARIF.html")
+ 
+ 
+@app.route("/add_tarifa",methods=["POST"])
+def add_tarifa():
+    if request.method == "POST":
+     TIPOVICULO = request.form["TIPODEVEHICULO"]
+     HORA = request.form["HORA"]
+     MES = request.form["MES"]
+     cursor = mysql.connection.cursor()
+     cursor.execute(" INSERT INTO tarifa (TIPOVEHICULO,HORA,MES) VALUES (%s,%s,%s)",[TIPOVICULO,HORA,MES]  )
+     mysql.connection.commit()
+     return render_template("INICIO.html")
+ 
+ 
 
 
 @app.route("/lista")
-def lista():
-   return render_template("lista.html")
+def listarr():
+   cursor = mysql.connection.cursor()
+   cursor.execute(" SELECT * FROM usuarios")
+   usuarios= cursor.fetchall()
+   cursor.close()
+   return render_template("lista.html", usuarios=usuarios)
+
+
 
 
 
@@ -95,7 +123,7 @@ def ingrreso():
 
 @app.route("/add_in", methods=["POST"])
 def add_in():
-  if request.method == "POST":
+    if request.method == "POST":
      PLACA =request.form["PLACA"]
      #MODEL=request.form["MODELO"]
      TIPO= request.form["TIPO"]
@@ -116,8 +144,17 @@ def SALID():
 
 
 @app.route("/TARIFA")
-def TARIFA():
-  return render_template("TARIFA.html")
+def tarifaa():
+   #tarifa = tarifa.tarifaa()
+   cursor = mysql.connection.cursor()
+   cursor.execute(" SELECT * FROM tarifa")
+   tarifa = cursor.fetchall()
+   print(tarifa)
+   cursor.close()
+   return render_template("TARIFA.html",tarifa=tarifa)
+ 
+ 
+ 
 
 @app.route("/CONTACTO")
 def CONTACTO():
@@ -152,9 +189,23 @@ def SALIR():
    return render_template("index.html")
  
  
-  
+@app.route("/delete/<string:id>")
+def de(id):
+ cursor = mysql.connection.cursor()
+ cursor.execute('DELETE FROM tarifa WHERE id = %s',(id,))
+ mysql.connection.commit()
+ return redirect(url_for('INICIO'))
+#render_template("INICIO.html", mensaje9= "TARIFA ELIMINADA")
 
+@app.route("/editt/<id>")
+def editt(id):
+ cursor = mysql.connection.cursor()
+ cursor.execute("SELECT * FROM tarifa WHERE id = %s",(id))
+ data = cursor.fetchall()
+ print(data)
+ return render_template("edit.html")
 
+   
 
 if __name__=="__main__":
     app.secret_key = "pi"

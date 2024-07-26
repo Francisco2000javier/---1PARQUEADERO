@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(150deg, #2b6841, #2f7a4f);
+    height: 100vh;
+}
+h1{
+    text-align: center;
+    padding:0 0 20px 0;
+    border-bottom: 1px solid silver ;
+}

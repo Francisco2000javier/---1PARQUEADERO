@@ -31,45 +31,46 @@
               <div class="mx-auto p-2" style="width: 200px;">
               <img src="../static//images/imagen1.jpg" alt="500px" width="300">
             </div>
-
+            {% if mensaje9 %}
+            <div class="alert alert-danger" role="alert">
+              {{ mensaje9 }}
+            </div>
+            {% endif %}
+        {% if (tarifa) %}
             <table class="table">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">TIPO DE VEHICULO</th>
+                    <th scope="col">id</th>
+                    <th scope="col">TIPOVEHICULO</th>
                     <th scope="col">HORA</th>
                     <th scope="col">MES</th>
+                    <th scope="col">OPERACIONES</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for mostrar in tarifa %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td>MOTOCICLETA</td>
-                    <td>1200$</td>
-                    <td>50000$</td>
+                    <th scope="row">{{mostrar.0}}</th>
+                    <td>{{mostrar.1}}</td>
+                    <td>{{mostrar.2}}</td>
+                    <td>{{mostrar.3}}</td>
+                    <td>
+                      <a href="/edit">edit</a>
+                      <a href="/delete/{{mostrar.0}}">delete</a>
+                    </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>BUSETA</td>
-                    <td>2000$</td>
-                    <td>120000$</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>AUTOMOVIL/PARTICULAR</td>
-                    <td>1600$</td>
-                    <td>95000$</td>
-                  </tr>
-                  </tr>
-                  <tr>
-                   <th scope="row">4</th>
-                   <td>CICLA</td>
-                   <td>800$</td>
-                   <td>35000$</td>
-                 </tr>
-                 </tr>
+                  {% endfor %}
+                    
                 </tbody>
               </table>
+             
+              {% endif %}
+
+
+            
+           <br>
+           <br>
+            <a class="in" href="/INICIO">INICIO</a>
 
 
     
