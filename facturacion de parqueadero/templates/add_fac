@@ -1,0 +1,4 @@
+  # insertObject = []
+  # columnNames = [column[0] for column in cursor.description]
+   #for record in INFO:
+  #   insertObject.append(dict(zip(columnNames, record)))

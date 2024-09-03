@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <h1>detalle</h1>
+    
+
+ 
+        {% if (detalle) %}
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">id_factura</th>
+                    <th scope="col">horas</th>
+                    <th scope="col">valor</th>
+                    <th scope="col">total</th>
+                    <th scope="col">OPERACIONES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for mostrar in detalle %}
+                  <tr>
+                    <th scope="row">{{mostrar.0}}</th>
+                    <td>{{mostrar.1}}</td>
+                    <td>{{mostrar.2}}</td>
+                    <td>{{mostrar.3}}</td>
+                    <td>{{mostrar.4}}</td>
+                    <td>
+                      <a href="/edit">edit</a>
+                      <a href="/delete/{{mostrar.0}}">delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                    
+                </tbody>
+              </table>
+             
+              {% endif %}
+
+
+            
+           <br>
+           <br>
+            <a class="ia" href="/INICIO">INICIO</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

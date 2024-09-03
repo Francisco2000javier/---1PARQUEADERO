@@ -1,0 +1,28 @@
+#descripsion{
+    resize: none;
+}
+body{
+    background-color: aquamarine;
+}
+
+
+
+ 
+    .formulario h1{
+        text-align: center;
+        padding:0 0 20px 0;
+        border-bottom: 1px solid silver ;
+    }
+
+    div >img{
+ border-radius:8px ;
+ width: 80%;
+ 
+ height: auto;
+    }
+
+.in{
+   
+    color: #024e0f;
+}
+     

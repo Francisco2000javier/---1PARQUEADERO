@@ -1,0 +1,21 @@
+
+
+<h2>Crear Factura</h2>
+<form action="/add_in"method="POST">
+
+    <select name="idTarifa" id="" required>
+        <option selected disabled value="">tarifa</option>
+        {% for tarifa in tarif %}
+        <option value="{{ tarifa['idTarifa'] }}">{{ tarifa['TIPOVEHICULO'] }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="idCliente" id="" required>
+        <option selected disabled value="">USUARIO</option>
+        {% for user in users %}
+        <option value="{{ user['idCliente'] }}">{{ user['nombreCompleto'] }}</option>
+        {% endfor %}
+    </select>
+
+
+</form>
